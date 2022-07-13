@@ -11,10 +11,13 @@ function App() {
     const [status, setStatus] = React.useState(false);
     
     var socket = io(SERVER);
-    console.log('1: ', socket.connected);
+    
     socket.on('connect', () => {
-        console.log('2: ', socket.connected);
         setStatus(true);
+    });
+
+    socket.on('disconnect', () => {
+        setStatus(false);
     });
 
     return (
