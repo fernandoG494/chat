@@ -9,8 +9,9 @@ const Banner = ({status}) => {
                 <div className="row">
                     <div className="col serverStatus" >
                         {status ?
-                            <span className="serverStatus-online">Online</span> :
-                            <span className="serverStatus-offline">Offline</span>}
+                            <span class="badge rounded-pill bg-success">Online</span> :
+                            <span class="badge rounded-pill bg-danger">Offline</span>
+                        }
                     </div>
                     <div className="col Text">
                         Chat App
