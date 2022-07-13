@@ -2,15 +2,13 @@ import React from 'react';
 
 import './Banner.css';
 
-const Banner = ({socket}) => {
-    console.log(socket.connected);
-    
+const Banner = ({status}) => {
     return (
         <div>
             <div className='container'>
                 <div className="row">
                     <div className="col serverStatus" >
-                        {socket.connected ?
+                        {status ?
                             <span className="serverStatus-online">Online</span> :
                             <span className="serverStatus-offline">Offline</span>}
                     </div>

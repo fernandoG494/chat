@@ -1,6 +1,6 @@
 import React from 'react';
-import socketClient from "socket.io-client";
 import Banner from './components/Banner/Banner';
+import io from 'socket.io-client';
 import Chat from './components/Chat/Chat';
 
 import './App.css';
@@ -8,15 +8,18 @@ import './App.css';
 const SERVER = "http://127.0.0.1:8080";
 
 function App() {
-    var socket = socketClient(SERVER);
-
-    socket.on('connection', () => {
-        console.log(`I'm connected with the back-end`);
-    });
+    const [status, setStatus] = React.useState(false);
     
+    var socket = io(SERVER);
+    console.log('1: ', socket.connected);
+    socket.on('connect', () => {
+        console.log('2: ', socket.connected);
+        setStatus(true);
+    });
+
     return (
         <div className="App">
-            <Banner socket={socket}/>
+            <Banner status={status}/>
             <Chat />
         </div>
     );

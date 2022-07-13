@@ -15,10 +15,6 @@ http.listen(PORT, () => {
     console.log(`listening on *:${PORT}`);
 });
 
-app.get('/status', (req, res) => {
-    res.sendStatus(200);
-});
-
 io.on('connection', (socket) => {
     console.log('new client connected');
     socket.emit('connection', null);
